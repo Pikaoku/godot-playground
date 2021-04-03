@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Objects/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/projectiles/old_bullet.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.427632, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="GradientTexture" id=3]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0.0183486, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.477064, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+trail_size_modifier = SubResource( 5 )
+trail_color_modifier = SubResource( 3 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10.7603, 1.48934 )
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 15
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -6, 0 )
+rotation = 1.5708
+scale = Vector2( -4.21837, 0.348981 )
+amount = 13
+lifetime = 0.5
+speed_scale = 1.2
+process_material = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.025, 0.025 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.464671, 0.67144 )
+shape = SubResource( 7 )
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
