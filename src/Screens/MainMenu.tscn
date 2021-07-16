@@ -120,4 +120,5 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 texture = ExtResource( 3 )
 expand = true
+
 [connection signal="pressed" from="VBoxContainer/HBox/VBoxContainer/Play" to="." method="_on_Play_pressed"]

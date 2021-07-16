@@ -137,7 +137,7 @@ texture = ExtResource( 2 )
 position = Vector2( 188, 341 )
 
 [node name="player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 148, 296 )
+position = Vector2( 152, 296 )
 
 [node name="VictoryArea" type="Area2D" parent="."]
 
@@ -145,3 +145,5 @@ position = Vector2( 148, 296 )
 position = Vector2( 2328, 600 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="VictoryArea" to="." method="_on_VictoryArea_body_entered"]
+
+[editable path="player"]
